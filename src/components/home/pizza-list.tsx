@@ -2,7 +2,7 @@
 
 import { Product } from "@/generated/prisma"
 import { PizzaItem } from "./pizza-item"
-import { useProducts } from "@/stores/poducts"
+import { useProducts } from "@/stores/products"
 import { useEffect } from "react"
 
 type Props = {
