@@ -9,6 +9,7 @@ import { LoginAreaStepEmail } from "./login-area-step-email";
 import { hasEmail } from './../../services/auth';
 import { LoginAreaSignup } from "./login-area-step-signup";
 import { getCookie } from "cookies-next/client";
+import { LoginAreaSignin } from "./login-area-step-sigin";
 
 type Steps = "EMAIL" | "SIGNUP" | "SIGNIN";
 
@@ -59,7 +60,9 @@ export const LoginAreaDialog = () => {
             />
           }
           {step === "SIGNIN" &&
-            <div>Login</div>
+            <LoginAreaSignin 
+              email={emailField}
+            />
           }
           {step === "SIGNUP" &&
             <LoginAreaSignup  
