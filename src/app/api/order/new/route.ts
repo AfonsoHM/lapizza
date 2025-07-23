@@ -1,12 +1,18 @@
 import { getLoggedUserFromHeader } from "@/services/auth"
+import { createNewOrder } from "@/services/order"
 import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   const { cart } = await request.json()
   const loggedUser = await getLoggedUserFromHeader()
 
-  console.log(cart)
-  console.log(loggedUser)
+  if(!loggedUser) return NextResponse.json({error: 'Usuário não está logado!'})
+  if(!cart || (cart && cart.length <= 0)) return NextResponse.json({error: 'Carrinho vazio'})
 
-  return NextResponse.json({blabla: true})
+  const order = await createNewOrder(loggedUser.id, cart)
+  if(!order) return NextResponse.json({error: "Ocorreu um erro" })
+
+  //Método de pagamento
+
+  return NextResponse.json({ order }, {status: 201})
 }
