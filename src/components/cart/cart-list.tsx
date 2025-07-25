@@ -24,17 +24,16 @@ export const CartList = () => {
     setSubtotal(sub)
   }
 
-  useEffect(() => {
-    calculateSubtotal()
-  }, [ cart])
+  useEffect(calculateSubtotal, [cart])
 
   const handleFinish = async () => {
     if(cart.items.length > 0) {
         const orderReq = await apiWithAuth.post('/order/new', {
           cart: cart.items
         })
-
-        // Pega os dados do pedido
+        if(orderReq.status === 201) {
+          window.location.href = orderReq.data.url
+        }
     }
   }
 

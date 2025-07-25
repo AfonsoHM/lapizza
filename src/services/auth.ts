@@ -56,7 +56,7 @@ export const createUserToken = async (userId: number) => {
 
 export const getLoggedUserFromHeader = async () => {
   const headersList = await headers()
-  const authorization = headersList.get('authorization')?.split('')
+  const authorization = headersList.get('authorization')?.split(' ')
   if(!authorization) return null
   if(authorization[0] !== 'Token') return null
   if(!authorization[1]) return null
