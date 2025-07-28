@@ -27,7 +27,7 @@ export default async function Page({searchParams}: Props) {
 
       <main className="container mx-auto mb-10 text-center">
         <h1 className="text-2xl">Parabéns pela compra!</h1>
-        <h3 className="text-xl">Em breve enviaremos um e=mail para: <strong>{customerEmail}</strong> com mais informações</h3>
+        <h3 className="text-xl">Em breve enviaremos um e-mail para: <strong>{customerEmail}</strong> com mais informações</h3>
       </main>
     </div>
   )
